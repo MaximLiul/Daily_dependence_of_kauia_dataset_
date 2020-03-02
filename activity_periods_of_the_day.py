@@ -29,7 +29,7 @@ def activity_periods_of_the_day(data_frame, column_for_analysis, date_column, qu
 
     # creation of 'Time Interval' column and full filling it by the strings what correspond to the interval what is suitable for a considered product_or_user
     min_hour_value_in_interval = 0
-    while min_hour_value_in_interval < list_of_considered_hours[len(list_of_considered_hours) - 2]:
+    while min_hour_value_in_interval < len(list_of_considered_hours) - 1:
     # we use min() function in order to prevent the situation when index will exceed an array's length
         df_selected.loc[(df_selected[date_column] >= list_of_considered_hours[
           min_hour_value_in_interval]) & (df_selected[date_column] <= list_of_considered_hours[
@@ -74,5 +74,5 @@ def activity_periods_of_the_day(data_frame, column_for_analysis, date_column, qu
                     product_or_user, number_of_intervals, select_product_or_user))
 
 activity_periods_of_the_day(df, 'Member ID', 'Transaction Date', 'Product Quantity',
-                                'Transaction ID', 2, product_or_user = 'user', list_of_excluded_hours = [0,1,18,19,20,21,22,23],
+                                'Transaction ID', 22, product_or_user = 'user', list_of_excluded_hours = [0,1,18,19,20,21,22,23],
                                 select_product_or_user = False)
